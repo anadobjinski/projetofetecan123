@@ -1,131 +1,151 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cidade Inteligente</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cidade Inteligente - Cadastro</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f0f2f5;
-      color: #333;
+      background-color: #0f1c2e;
+      color: #e0f7fa;
+      margin: 0;
+      padding: 0;
     }
 
     header {
-      background-color: #004d99;
-      color: #fff;
+      background-color: #00bcd4;
       padding: 20px;
       text-align: center;
     }
 
-    .container {
-      padding: 20px;
+    header h1 {
+      margin: 0;
+      color: #0f1c2e;
     }
 
-    .card {
-      background: white;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+    main {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    .toggle {
-      margin-top: 10px;
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #26c6da;
+      border-bottom: 1px solid #26c6da;
+      padding-bottom: 5px;
     }
 
     label {
-      display: inline-block;
-      margin-right: 10px;
+      display: block;
+      margin: 10px 0 5px;
     }
 
-    input[type="checkbox"] {
-      transform: scale(1.2);
-    }
-
-    .dashboard-data {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-    }
-
-    .dashboard-item {
-      flex: 1;
+    input, select, textarea {
+      width: 100%;
       padding: 10px;
-      background: #e6f2ff;
-      margin: 5px;
-      border-radius: 5px;
-      text-align: center;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 15px;
+      background-color: #263238;
+      color: #fff;
     }
 
     button {
-      padding: 10px 20px;
-      background-color: #0077cc;
-      color: white;
+      background-color: #00acc1;
+      color: #fff;
+      padding: 12px 20px;
       border: none;
-      border-radius: 5px;
-      margin-top: 10px;
+      border-radius: 4px;
       cursor: pointer;
     }
 
     button:hover {
-      background-color: #005fa3;
+      background-color: #008b9a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #102027;
+      color: #b0bec5;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Painel da Cidade Inteligente</h1>
-    <p>Monitoramento e controle urbano em tempo real</p>
+    <h1>Cadastro de Cidade Inteligente</h1>
   </header>
 
-  <div class="container">
-    <div class="card">
-      <h2>Iluminação Pública</h2>
-      <label for="lampToggle">Ativar Iluminação Noturna</label>
-      <input type="checkbox" id="lampToggle" onchange="atualizarStatus('lampToggle')"/>
-    </div>
+  <main>
+    <section>
+      <h2>Dados da Cidade</h2>
+      <label for="nome">Nome da Cidade</label>
+      <input type="text" id="nome" name="nome">
 
-    <div class="card">
-      <h2>Sistema de Coleta</h2>
-      <p>Status da coleta: <span id="coletaStatus">Agendada</span></p>
-      <button onclick="alterarColeta()">Alterar Coleta</button>
-    </div>
+      <label for="populacao">População Estimada</label>
+      <input type="number" id="populacao" name="populacao">
 
-    <div class="card">
-      <h2>Tráfego Urbano</h2>
-      <div class="dashboard-data">
-        <div class="dashboard-item">
-          <h3>Semáforos</h3>
-          <p id="semaforoStatus">Sincronizados</p>
-        </div>
-        <div class="dashboard-item">
-          <h3>Fluxo</h3>
-          <p id="fluxoStatus">Moderado</p>
-        </div>
-      </div>
-      <button onclick="atualizarTrafego()">Atualizar Dados</button>
-    </div>
-  </div>
+      <label for="regiao">Região Administrativa</label>
+      <select id="regiao" name="regiao">
+        <option>Centro</option>
+        <option>Leste</option>
+        <option>Oeste</option>
+        <option>Norte</option>
+        <option>Sul</option>
+      </select>
+    </section>
 
-  <script>
-    function atualizarStatus(id) {
-      const estado = document.getElementById(id).checked ? 'ativo' : 'inativo';
-      alert("Iluminação está agora " + estado);
-    }
+    <section>
+      <h2>Consumo de Energia e Iluminação Pública</h2>
+      <label for="luz">Quantidade de Energia Elétrica Consumida (kWh/mês)</label>
+      <input type="number" id="luz" name="luz">
 
-    function alterarColeta() {
-      const status = document.getElementById("coletaStatus");
-      status.innerText = (status.innerText === "Agendada") ? "Em andamento" : "Agendada";
-    }
+      <label for="publica">Número de Postes de Iluminação Pública</label>
+      <input type="number" id="publica" name="publica">
 
-    function atualizarTrafego() {
-      const fluxo = ["Moderado", "Pesado", "Leve"];
-      const semaforos = ["Sincronizados", "Desincronizados"];
-      document.getElementById("fluxoStatus").innerText = fluxo[Math.floor(Math.random() * fluxo.length)];
-      document.getElementById("semaforoStatus").innerText = semaforos[Math.floor(Math.random() * semaforos.length)];
-    }
-  </script>
+      <label for="lampadas">Tipo de Lâmpadas Utilizadas</label>
+      <select id="lampadas" name="lampadas">
+        <option>LED Inteligente</option>
+        <option>Sódio</option>
+        <option>Halógena</option>
+      </select>
+    </section>
+
+    <section>
+      <h2>Instruções para Uso da Inteligência Urbana</h2>
+      <label for="instrucoes">Como utilizar o sistema de inteligência da cidade:</label>
+      <textarea id="instrucoes" rows="6" placeholder="Descreva como os cidadãos podem acessar os serviços inteligentes, aplicativos, alertas urbanos, e mais."></textarea>
+    </section>
+
+    <section>
+      <h2>Serviços e Funcionalidades Adicionais</h2>
+      <label for="iot">Quantos sensores IoT estão ativos?</label>
+      <input type="number" id="iot" name="iot">
+
+      <label for="monitoramento">Monitoramento em tempo real?</label>
+      <select id="monitoramento" name="monitoramento">
+        <option>Sim</option>
+        <option>Não</option>
+      </select>
+
+      <label for="seguranca">Sistema de segurança com reconhecimento facial?</label>
+      <select id="seguranca" name="seguranca">
+        <option>Sim</option>
+        <option>Não</option>
+      </select>
+    </section>
+
+    <button type="submit">Enviar Cadastro</button>
+  </main>
+
+  <footer>
+    &copy; 2025 Cidade Inteligente | Desenvolvido por Iniciativas Sustentáveis
+  </footer>
 </body>
 </html>
+
